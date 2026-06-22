@@ -11,7 +11,7 @@ services:
   - name: backend
     image:
       registry_type: GHCR
-      registry: ghcr.io/<YOUR_GITHUB_USERNAME>/hello-backend
+      registry: ghcr.io/ncprac/hello-backend
       tag: latest
     http_port: 8080
     instance_size_slug: apps-s-1vcpu-0.5gb
@@ -22,7 +22,7 @@ services:
   - name: frontend
     image:
       registry_type: GHCR
-      registry: ghcr.io/<YOUR_GITHUB_USERNAME>/hello-frontend
+      registry: ghcr.io/ncprac/hello-frontend
       tag: latest
     http_port: 80
     instance_size_slug: apps-s-1vcpu-0.5gb
