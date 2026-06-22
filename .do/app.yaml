@@ -1,31 +1,27 @@
-# Digital Ocean App Platform spec
-# Deploy with: doctl apps create --spec .do/app.yaml
-# Update with: doctl apps update $DO_APP_ID --spec .do/app.yaml
-#
-# Replace <YOUR_GITHUB_USERNAME> with your actual GitHub username before deploying.
-
 name: hello-world
 region: nyc
 
 services:
   - name: backend
-    image:
-      registry_type: GHCR
-      registry: ghcr.io/ncprac/hello-backend
-      tag: latest
+    github:
+      repo: ncprac/main_day
+      branch: master
+      deploy_on_push: true
+    source_dir: /backend
     http_port: 8080
-    instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
     routes:
       - path: /api
 
   - name: frontend
-    image:
-      registry_type: GHCR
-      registry: ghcr.io/ncprac/hello-frontend
-      tag: latest
+    github:
+      repo: ncprac/main_day
+      branch: master
+      deploy_on_push: true
+    source_dir: /frontend
     http_port: 80
-    instance_size_slug: apps-s-1vcpu-0.5gb
     instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
     routes:
       - path: /
